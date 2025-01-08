@@ -39,32 +39,30 @@ function Sidebar() {
         </svg>
     ]
     return (
-        <>
-            <div className={'p-5 h-screen bg-slate-900 w-1/6 text-gray-50'}>
-                <div className={'mb-4 flex justify-between items-center'}>
-                    <div className={'flex gap-2 items-center'}>
-                        <h1 className={'font-serif font-bold text-xl'}>RSS Reader</h1>
-                    </div>
-                    <div className={'size-7 rounded-full p-1 bg-gray-700 hover:bg-gray-600 cursor-pointer'}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                             stroke="currentColor" className="size-5">
-                            <path strokeLinecap="round" strokeLinejoin="round"
-                                  d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"/>
-                        </svg>
-                    </div>
-                </div>
+        <div className={'p-5 h-full bg-slate-900 w-1/6 text-gray-50'}>
 
-                <div className={'flex flex-col gap-4'}>
-                    {sidebarElements.map((element, index) =>
-                        <div key={element}
-                             className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
-                            {sidebarIcons[index]}
-                            <h1>{element}</h1>
-                        </div>
-                    )}
+            <div className={'flex justify-between items-center'}>
+                <h1 className={'font-serif font-bold text-xl select-none'}>RSS Reader</h1>
+                <div className={'size-7 rounded-full p-1 bg-gray-700 hover:bg-gray-600 cursor-pointer'}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                         stroke="currentColor" className="size-5">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"/>
+                    </svg>
                 </div>
             </div>
-        </>
+
+            <div className={'mt-4 flex flex-col gap-4'}>
+                {sidebarElements.map((element, index) =>
+                    <div key={element}
+                         className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                        {sidebarIcons[index]}
+                        <h1 className={'select-none'}>{element}</h1>
+                    </div>
+                )}
+            </div>
+
+        </div>
     )
 }
 
