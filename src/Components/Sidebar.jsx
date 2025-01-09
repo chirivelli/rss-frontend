@@ -39,7 +39,7 @@ function Sidebar() {
         </svg>
     ]
     return (
-        <div className={'p-5 h-full bg-slate-900 w-1/6 text-gray-50'}>
+        <div className={'p-5'}>
 
             <div className={'flex justify-between items-center'}>
                 <h1 className={'font-serif font-bold text-xl select-none'}>RSS Reader</h1>
