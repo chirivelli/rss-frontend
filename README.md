@@ -4,5 +4,5 @@
 
 ### Project TODO
 
-- [ ] Learn About RSS
-- [ ] make a high level design
+- [ ] Learn About RSS (use ChatGPT)
+- [ ] Make a high level design
