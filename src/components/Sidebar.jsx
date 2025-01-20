@@ -1,4 +1,8 @@
-function Sidebar() {
+export default function Sidebar(props) {
+    const handleClick = (e, page) => {
+        e.preventDefault()
+        props.setActivePage(page)
+    }
     return (
         <div className={'p-5 h-full flex flex-col'}>
 
@@ -15,7 +19,8 @@ function Sidebar() {
 
             <div className={'mt-4 grow flex flex-col justify-between'}>
                 <div className={'flex flex-col gap-4'}>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Home')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -24,7 +29,8 @@ function Sidebar() {
                         </svg>
                         <h1 className={'select-none'}>Home</h1>
                     </div>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Library')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -33,7 +39,8 @@ function Sidebar() {
                         </svg>
                         <h1 className={'select-none'}>Library</h1>
                     </div>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Search')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -44,7 +51,8 @@ function Sidebar() {
                     </div>
                 </div>
                 <div className={'flex flex-col gap-4'}>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Trash')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -53,7 +61,8 @@ function Sidebar() {
                         </svg>
                         <h1 className={'select-none'}>Trash</h1>
                     </div>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Settings')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -63,7 +72,8 @@ function Sidebar() {
                         </svg>
                         <h1 className={'select-none'}>Settings</h1>
                     </div>
-                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}>
+                    <div className={'p-2 rounded flex gap-1 hover:bg-slate-700 cursor-pointer'}
+                         onClick={e => handleClick(e, 'Account')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor"
                              className="size-6">
@@ -78,5 +88,3 @@ function Sidebar() {
         </div>
     )
 }
-
-export default Sidebar
