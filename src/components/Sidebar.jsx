@@ -9,7 +9,7 @@ function Sidebar(props) {
                 <h1 className='font-serif text-xl font-bold select-none'>
                     RSS Reader
                 </h1>
-                <div className='size-7 cursor-pointer rounded-full bg-gray-700 p-1 hover:bg-gray-600'>
+                <div className='rounded-sm-full size-7 cursor-pointer bg-gray-700 p-1 hover:bg-gray-600'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
@@ -30,7 +30,7 @@ function Sidebar(props) {
             <div className='mt-4 flex grow flex-col justify-between'>
                 <div className='flex flex-col gap-4'>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick('Home')}
                     >
                         <svg
@@ -50,7 +50,7 @@ function Sidebar(props) {
                         <h1 className='select-none'>Home</h1>
                     </div>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick(e, 'Library')}
                     >
                         <svg
@@ -70,7 +70,7 @@ function Sidebar(props) {
                         <h1 className='select-none'>Library</h1>
                     </div>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick(e, 'Search')}
                     >
                         <svg
@@ -92,7 +92,7 @@ function Sidebar(props) {
                 </div>
                 <div className='flex flex-col gap-4'>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick(e, 'Trash')}
                     >
                         <svg
@@ -112,7 +112,7 @@ function Sidebar(props) {
                         <h1 className='select-none'>Trash</h1>
                     </div>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick(e, 'Settings')}
                     >
                         <svg
@@ -137,7 +137,7 @@ function Sidebar(props) {
                         <h1 className='select-none'>Settings</h1>
                     </div>
                     <div
-                        className='flex cursor-pointer gap-1 rounded p-2 hover:bg-slate-700'
+                        className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                         onClick={(e) => handleClick(e, 'Account')}
                     >
                         <svg
