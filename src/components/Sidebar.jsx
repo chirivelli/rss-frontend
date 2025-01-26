@@ -1,15 +1,11 @@
 function Sidebar(props) {
-    const handleClick = (e, page) => {
-        e.preventDefault()
-        props.setActivePage(page)
-    }
     return (
         <div className='flex h-full flex-col p-5'>
             <div className='flex items-center justify-between'>
                 <h1 className='font-serif text-xl font-bold select-none'>
                     RSS Reader
                 </h1>
-                <div className='rounded-sm-full size-7 cursor-pointer bg-gray-700 p-1 hover:bg-gray-600'>
+                <div className='size-7 cursor-pointer rounded-full bg-gray-700 p-1 hover:bg-gray-600'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
@@ -31,7 +27,7 @@ function Sidebar(props) {
                 <div className='flex flex-col gap-4'>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick('Home')}
+                        onClick={e => props.setActivePage('Home')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -51,7 +47,7 @@ function Sidebar(props) {
                     </div>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick(e, 'Library')}
+                        onClick={e => props.setActivePage('Library')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -71,7 +67,7 @@ function Sidebar(props) {
                     </div>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick(e, 'Search')}
+                        onClick={e => props.setActivePage('Search')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -93,7 +89,7 @@ function Sidebar(props) {
                 <div className='flex flex-col gap-4'>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick(e, 'Trash')}
+                        onClick={e => props.setActivePage('Trash')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -113,7 +109,7 @@ function Sidebar(props) {
                     </div>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick(e, 'Settings')}
+                        onClick={e => props.setActivePage('Settings')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -138,7 +134,7 @@ function Sidebar(props) {
                     </div>
                     <div
                         className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
-                        onClick={(e) => handleClick(e, 'Account')}
+                        onClick={e => props.setActivePage('Account')}
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
