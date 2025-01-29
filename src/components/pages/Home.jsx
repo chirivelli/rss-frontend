@@ -10,7 +10,24 @@ function Home() {
     ])
     return (
         <div>
-            <div className='flex flex-col gap-4'>
+            <div className='flex justify-end'>
+                <button
+                    className='rounded-sm bg-slate-400 px-4 py-2'
+                    type='button'
+                    onClick={e =>
+                        setPosts([
+                            ...posts,
+                            {
+                                title: `Post ${posts.length + 1}`,
+                                content: 'lorem ipsum',
+                            },
+                        ])
+                    }
+                >
+                    + Add
+                </button>
+            </div>
+            <div className='mt-4 flex flex-col gap-4'>
                 {posts.map((post, index) => (
                     <div
                         key={index}
