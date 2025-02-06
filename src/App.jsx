@@ -3,7 +3,7 @@ import MainView from './components/MainView.jsx'
 import { useState } from 'react'
 
 function App() {
-    const [activePage, setActivePage] = useState('Library')
+    const [activePage, setActivePage] = useState('Subscriptions')
 
     return (
         <div className='flex h-screen text-gray-50'>

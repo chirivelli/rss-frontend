@@ -10,22 +10,8 @@ function Home() {
     ])
     return (
         <div>
-            <div className='flex justify-end'>
-                <button
-                    className='rounded-sm bg-slate-400 px-4 py-2'
-                    type='button'
-                    onClick={e =>
-                        setPosts([
-                            ...posts,
-                            {
-                                title: `Post ${posts.length + 1}`,
-                                content: 'lorem ipsum',
-                            },
-                        ])
-                    }
-                >
-                    + Add
-                </button>
+            <div className='flex justify-between'>
+                <h2 className='font-serif text-3xl'>Home</h2>
             </div>
             <div className='mt-4 flex flex-col gap-4'>
                 {posts.map((post, index) => (
