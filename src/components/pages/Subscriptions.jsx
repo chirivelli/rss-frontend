@@ -27,7 +27,7 @@ function Subscriptions() {
         <div>
             <div className='flex justify-between'>
                 <h2 className='font-serif text-3xl'>Subscriptions</h2>
-                <button className='rounded-md bg-slate-500 px-4 py-2'>
+                <button className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'>
                     + Add
                 </button>
             </div>
