@@ -19,6 +19,7 @@ function Sidebar(props) {
                         <div
                             className='flex cursor-pointer gap-1 rounded-sm p-2 hover:bg-slate-700'
                             onClick={() => props.setActivePage(page.name)}
+                            key={page.name}
                         >
                             {page.icon}
                             <h1 className='select-none'>{page.name}</h1>
