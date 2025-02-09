@@ -1,4 +1,11 @@
 function Home() {
+    // useEffect(() => {
+    //     fetch('https://www.theverge.com/rss/index.xml', {
+    //         method: 'GET',
+    //         headers: {},
+    //     }).then(res => console.log(res))
+    // }, [])
+
     return (
         <div>
             <div className='flex justify-between'>
