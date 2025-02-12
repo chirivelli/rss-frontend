@@ -1,10 +1,7 @@
 function Home() {
-    // useEffect(() => {
-    //     fetch('https://www.theverge.com/rss/index.xml', {
-    //         method: 'GET',
-    //         headers: {},
-    //     }).then(res => console.log(res))
-    // }, [])
+    // const [posts, setPosts] = useState([])
+
+    // useEffect(() => {}, [])
 
     return (
         <div>
