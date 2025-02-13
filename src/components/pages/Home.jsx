@@ -1,7 +1,23 @@
-function Home() {
-    // const [posts, setPosts] = useState([])
+import { useEffect, useState } from 'react'
 
-    // useEffect(() => {}, [])
+function Home() {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/theverge')
+            .then(res => res.text())
+            .then(data => {
+                console.log('xml')
+                const parser = new DOMParser()
+                const xmlDoc = parser.parseFromString(data, 'text/xml')
+                // const entries = Array.from(xmlDoc.getElementsByTagName('entry'))
+                // entries.forEach(entry => {
+                //     console.log(entry.textContent)
+                // })
+                // console.log(entries)
+                // setPosts(entries)
+            })
+    }, [])
 
     return (
         <div>
@@ -10,13 +26,7 @@ function Home() {
             </div>
             <div className='mt-4 flex flex-col gap-4'>
                 {/*{posts.map((post, index) => (*/}
-                {/*    <div*/}
-                {/*        key={index}*/}
-                {/*        className='rounded-xs bg-slate-500/60 p-2 hover:bg-slate-500/90'*/}
-                {/*    >*/}
-                {/*        <h3 className='text-2xl'>{post.title}</h3>*/}
-                {/*        <p className='text-gray-100/70'>{post.content}</p>*/}
-                {/*    </div>*/}
+                {/*    <div>{post.textContent}</div>*/}
                 {/*))}*/}
             </div>
         </div>
@@ -24,3 +34,13 @@ function Home() {
 }
 
 export default Home
+
+// {posts.map((post, index) => (
+//     <div
+//         key={index}
+//         className='rounded-xs bg-slate-500/60 p-2 hover:bg-slate-500/90'
+//     >
+//         <h3 className='text-2xl'>{post.title}</h3>
+//         <p className='text-gray-100/70'>{post.content}</p>
+//     </div>
+// ))}
