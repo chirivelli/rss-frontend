@@ -4,18 +4,16 @@ function Home() {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/theverge')
+        fetch('http://localhost:3000/subscriptions/0')
             .then(res => res.text())
             .then(data => {
                 console.log('xml')
                 const parser = new DOMParser()
                 const xmlDoc = parser.parseFromString(data, 'text/xml')
-                // const entries = Array.from(xmlDoc.getElementsByTagName('entry'))
-                // entries.forEach(entry => {
-                //     console.log(entry.textContent)
-                // })
-                // console.log(entries)
-                // setPosts(entries)
+                console.log(xmlDoc)
+                let titles = Array.from(xmlDoc.getElementsByTagName('title'))
+                titles = titles.slice(1)
+                setPosts(titles)
             })
     }, [])
 
@@ -24,10 +22,12 @@ function Home() {
             <div className='flex justify-between'>
                 <h2 className='font-serif text-3xl'>Home</h2>
             </div>
-            <div className='mt-4 flex flex-col gap-4'>
-                {/*{posts.map((post, index) => (*/}
-                {/*    <div>{post.textContent}</div>*/}
-                {/*))}*/}
+            <div className='mt-4 flex flex-col gap-4 divide-y divide-gray-500'>
+                {posts.map((post, index) => (
+                    <h3 key={index} className='text-xl font-bold text-gray-200'>
+                        {post.textContent}{' '}
+                    </h3>
+                ))}
             </div>
         </div>
     )
