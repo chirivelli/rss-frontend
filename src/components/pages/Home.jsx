@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 function Home() {
     const [posts, setPosts] = useState([])
+    const [texts, setText] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/subscriptions/0')
@@ -14,6 +15,11 @@ function Home() {
                 let titles = Array.from(xmlDoc.getElementsByTagName('title'))
                 titles = titles.slice(1)
                 setPosts(titles)
+
+                let summaries = Array.from(
+                    xmlDoc.getElementsByTagName('summary'),
+                )
+                setText(summaries)
             })
     }, [])
 
@@ -25,7 +31,12 @@ function Home() {
             <div className='mt-4 flex flex-col gap-4 divide-y divide-gray-500'>
                 {posts.map((post, index) => (
                     <h3 key={index} className='text-xl font-bold text-gray-200'>
-                        {post.textContent}{' '}
+                        {post.textContent}
+                    </h3>
+                ))}
+                {texts.map((text, index) => (
+                    <h3 key={index} className='text-xl font-bold text-gray-200'>
+                        {text.textContent}
                     </h3>
                 ))}
             </div>
