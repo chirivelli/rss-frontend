@@ -6,16 +6,13 @@ function App() {
     const [activePage, setActivePage] = useState('Home')
 
     return (
-        <div className='flex h-screen text-gray-50'>
-            <div className={'h-full w-60 bg-slate-900'}>
+        <div className='flex text-gray-50'>
+            <div className={'w-60 bg-slate-900'}>
                 <Sidebar setActivePage={setActivePage} />
             </div>
-            <div className='h-full grow bg-slate-800'>
+            <div className='grow bg-slate-800'>
                 <MainView activePage={activePage} />
             </div>
-            {/*<div className='h-full w-60 bg-slate-950'>*/}
-            {/*    <InfoBar />*/}
-            {/*</div>*/}
         </div>
     )
 }
