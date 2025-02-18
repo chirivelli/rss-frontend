@@ -4,13 +4,12 @@ function Subscriptions() {
     const [subs, setSubs] = useState([
         {
             name: 'Test Name',
-            category: 'Tech Category',
-            feedLink: 'https://www.test.com/rss/index.xml',
+            feed_link: 'https://www.test.com/rss/index.xml',
         },
     ])
 
     useEffect(() => {
-        fetch('http://localhost:3000/subscriptions')
+        fetch('http://localhost:3000/subscriptions/sathwikc')
             .then(res => res.json())
             .then(data => {
                 console.log('json')
@@ -44,13 +43,8 @@ function Subscriptions() {
                                     </svg>
                                 </td>
                                 <td className='p-4'>{sub?.name}</td>
-                                <td className='p-4'>
-                                    <span className='rounded-lg bg-slate-400 p-1 text-sm text-slate-800'>
-                                        {sub?.category}
-                                    </span>
-                                </td>
                                 <td className='p-4 text-sm text-blue-400 italic'>
-                                    {sub?.feedLink}
+                                    {sub?.feed_link}
                                 </td>
                             </tr>
                         ))}

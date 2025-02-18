@@ -1,12 +1,5 @@
 function Sidebar(props) {
-    const pages = [
-        { name: 'Home' },
-        { name: 'Subscriptions' },
-        { name: 'Search' },
-        { name: 'Trash' },
-        { name: 'Settings' },
-        { name: 'Account' },
-    ]
+    const pages = [{ name: 'Home' }, { name: 'Subscriptions' }]
     return (
         <div className='flex flex-col p-5'>
             <h1 className='font-serif text-xl font-bold select-none'>
