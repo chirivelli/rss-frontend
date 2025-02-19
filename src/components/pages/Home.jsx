@@ -10,8 +10,8 @@ function Home() {
             for (const site of sites) {
                 const parser = new DOMParser()
                 const xmlDoc = parser.parseFromString(site?.xml, 'text/xml')
+                console.log(xmlDoc)
                 const atomItems = xmlDoc.getElementsByTagName('item')
-
                 const list = []
                 for (const atomItem of atomItems) {
                     let extractedDesc =
@@ -27,6 +27,7 @@ function Home() {
                         title: atomItem.querySelector('title').textContent,
                         description: extractedDesc,
                         site: xmlDoc.querySelector('title').textContent,
+                        pubDate: atomItem.querySelector('pubDate').textContent,
                     }
                     list.push(article)
                 }
@@ -39,14 +40,16 @@ function Home() {
 
     return (
         <div>
-            <h2 className='font-serif text-3xl'>Home</h2>
-            <div className='mt-4 flex flex-col gap-4'>
+            <div className='mx-auto mt-4 flex max-w-6xl flex-col gap-4'>
                 {articles.map((article, index) => (
                     <div
                         key={article.title}
-                        className='rounded bg-slate-700 p-4'
+                        className='flex flex-col gap-1 rounded bg-slate-700 p-4'
                     >
                         <h1 className='text-xl font-bold'>{article.title}</h1>
+                        <p className='w-fit rounded-md bg-slate-500 p-1'>
+                            {article.site.split(' ').at(0)}
+                        </p>
                         <p className='text-gray-200'>{article.description}</p>
                     </div>
                 ))}
