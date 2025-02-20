@@ -19,6 +19,12 @@ function NavBar(props) {
                     >
                         Subscriptions
                     </li>
+                    <li
+                        className={`cursor-pointer rounded-sm px-4 py-2 transition hover:bg-slate-600 ${props.activePage === 'Account' && 'bg-slate-700'}`}
+                        onClick={() => props.setActivePage('Account')}
+                    >
+                        Account
+                    </li>
                 </ol>
             </div>
         </nav>

@@ -1,5 +1,6 @@
 import Home from './pages/Home.jsx'
 import Subscriptions from './pages/Subscriptions.jsx'
+import Account from './pages/Account.jsx'
 
 function Main(props) {
     return (
@@ -7,6 +8,7 @@ function Main(props) {
             <div className='mx-auto max-w-6xl'>
                 {props.activePage === 'Home' && <Home />}
                 {props.activePage === 'Subscriptions' && <Subscriptions />}
+                {props.activePage === 'Account' && <Account />}
             </div>
         </main>
     )

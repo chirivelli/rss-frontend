@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 
 function Subscriptions() {
-    const [subs, setSubs] = useState([
-        {
-            name: 'Test Name',
-            feed_link: 'https://www.test.com/rss/index.xml',
-        },
-    ])
+    const [subs, setSubs] = useState([])
+    const [subName, setSubName] = useState('')
+    const [feedLink, setFeedLink] = useState('')
 
     useEffect(() => {
         fetch('http://localhost:3000/subscriptions/sathwikc')
@@ -20,9 +17,39 @@ function Subscriptions() {
 
     return (
         <div>
-            <div className='flex justify-between'>
-                <h2 className='font-serif text-3xl'>Subscriptions</h2>
-                <button className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'>
+            <div className='flex items-center gap-10'>
+                <input
+                    type='text'
+                    value={subName}
+                    onChange={e => setSubName(e.target.value)}
+                    placeholder='Sub Name'
+                    className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
+                />
+                <input
+                    type='text'
+                    value={feedLink}
+                    onChange={e => setFeedLink(e.target.value)}
+                    placeholder='http://feed.link/rss'
+                    className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
+                />
+                <button
+                    className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'
+                    onClick={() => {
+                        // fetch('http://localhost:3000/subscriptions', {
+                        //     method: 'POST',
+                        //     headers: {
+                        //         'Content-Type': 'application/json',
+                        //     },
+                        //     body: JSON.stringify({
+                        //         user_id: 1,
+                        //         name: subName,
+                        //         feed_link: feedLink,
+                        //     }),
+                        // })
+                        //     .then(r => r.text())
+                        //     .then(data => console.log(data))
+                    }}
+                >
                     + Add
                 </button>
             </div>
