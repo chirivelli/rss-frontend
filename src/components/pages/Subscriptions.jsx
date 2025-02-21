@@ -6,13 +6,13 @@ function Subscriptions() {
     const [feedLink, setFeedLink] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:3000/subscriptions/sathwikc')
-            .then(res => res.json())
-            .then(data => {
-                console.log('json')
-                console.log(data)
-                setSubs(data)
-            })
+        // fetch('http://localhost:3000/subscriptions/sathwikc')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('json')
+        //         console.log(data)
+        //         setSubs(data)
+        //     })
     }, [])
 
     return (

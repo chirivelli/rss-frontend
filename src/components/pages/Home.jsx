@@ -4,38 +4,9 @@ function Home() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        async function fetchItems() {
-            const res = await fetch('http://localhost:3000/entries/sathwikc')
-            const sites = await res.json()
-            for (const site of sites) {
-                const parser = new DOMParser()
-                const xmlDoc = parser.parseFromString(site?.xml, 'text/xml')
-                console.log(xmlDoc)
-                const atomItems = xmlDoc.getElementsByTagName('item')
-                const list = []
-                for (const atomItem of atomItems) {
-                    let extractedDesc =
-                        atomItem.querySelector('description').textContent
-                    if (extractedDesc.includes('<p>')) {
-                        const htmlDoc = parser.parseFromString(
-                            extractedDesc,
-                            'text/xml',
-                        )
-                        extractedDesc = htmlDoc.querySelector('p').textContent
-                    }
-                    const article = {
-                        title: atomItem.querySelector('title').textContent,
-                        description: extractedDesc,
-                        site: xmlDoc.querySelector('title').textContent,
-                        pubDate: atomItem.querySelector('pubDate').textContent,
-                    }
-                    list.push(article)
-                }
-                setArticles(prev => [...prev, ...list])
-            }
-        }
-
-        fetchItems()
+        // fetch('http://localhost:3000/entries/sathwikc')
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
     }, [])
 
     return (
