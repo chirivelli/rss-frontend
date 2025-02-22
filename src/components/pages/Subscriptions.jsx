@@ -1,19 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-function Subscriptions() {
-    const [subs, setSubs] = useState([])
+function Subscriptions(props) {
+    const [subs, setSubs] = useState(props.user.subscriptions)
     const [subName, setSubName] = useState('')
     const [feedLink, setFeedLink] = useState('')
-
-    useEffect(() => {
-        // fetch('http://localhost:3000/subscriptions/sathwikc')
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log('json')
-        //         console.log(data)
-        //         setSubs(data)
-        //     })
-    }, [])
 
     return (
         <div>
@@ -35,19 +25,24 @@ function Subscriptions() {
                 <button
                     className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'
                     onClick={() => {
-                        // fetch('http://localhost:3000/subscriptions', {
-                        //     method: 'POST',
-                        //     headers: {
-                        //         'Content-Type': 'application/json',
-                        //     },
-                        //     body: JSON.stringify({
-                        //         user_id: 1,
-                        //         name: subName,
-                        //         feed_link: feedLink,
-                        //     }),
-                        // })
-                        //     .then(r => r.text())
-                        //     .then(data => console.log(data))
+                        fetch('http://localhost:3000/subscriptions', {
+                            method: 'POST',
+                            headers: {
+                                'X-Username': 'sathwikc',
+                            },
+                            body: JSON.stringify({
+                                name: subName,
+                                link: feedLink,
+                            }),
+                        })
+                            .then(res => res.json())
+                            .then(res => console.log(res))
+                            .then(res => {
+                                setSubs(prev => [
+                                    ...prev,
+                                    { name: subName, link: feedLink },
+                                ])
+                            })
                     }}
                 >
                     + Add
@@ -71,7 +66,7 @@ function Subscriptions() {
                                 </td>
                                 <td className='p-4'>{sub?.name}</td>
                                 <td className='p-4 text-sm text-blue-400 italic'>
-                                    {sub?.feed_link}
+                                    {sub?.link}
                                 </td>
                             </tr>
                         ))}

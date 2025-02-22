@@ -1,8 +1,7 @@
-function Account() {
+function Account(props) {
     return (
         <div>
-            <label>Username : </label>
-            <span>@sathwikc</span>
+            <p>Username : {props.user.username}</p>
         </div>
     )
 }

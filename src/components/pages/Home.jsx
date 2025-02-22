@@ -4,9 +4,9 @@ function Home() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        // fetch('http://localhost:3000/entries/sathwikc')
-        //     .then(res => res.json())
-        //     .then(data => console.log(data))
+        fetch('http://localhost:3000/articles')
+            .then(res => res.json())
+            .then(data => setArticles(data))
     }, [])
 
     return (
@@ -19,9 +19,9 @@ function Home() {
                     >
                         <h1 className='text-xl font-bold'>{article.title}</h1>
                         <p className='w-fit rounded-md bg-slate-500 p-1'>
-                            {article.site.split(' ').at(0)}
+                            {article.site}
                         </p>
-                        <p className='text-gray-200'>{article.description}</p>
+                        <p className='text-gray-200'>{article.snippet}</p>
                     </div>
                 ))}
             </div>
