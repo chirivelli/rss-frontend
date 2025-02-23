@@ -59,7 +59,31 @@ function Subscriptions(props) {
                                         fill='none'
                                         viewBox='0 0 24 24'
                                         stroke='currentColor'
-                                        className='size-6'
+                                        className='size-6 cursor-pointer'
+                                        onClick={() => {
+                                            fetch(
+                                                'http://localhost:3000/subscriptions',
+                                                {
+                                                    method: 'DELETE',
+                                                    headers: {
+                                                        'X-Username':
+                                                            'sathwikc',
+                                                    },
+                                                    body: JSON.stringify(sub),
+                                                },
+                                            )
+                                                .then(res => res.json())
+                                                .then(res => console.log(res))
+                                                .then(res => {
+                                                    setSubs(
+                                                        subs.filter(
+                                                            x =>
+                                                                x.link !==
+                                                                sub.link,
+                                                        ),
+                                                    )
+                                                })
+                                        }}
                                     >
                                         <path d='M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
                                     </svg>

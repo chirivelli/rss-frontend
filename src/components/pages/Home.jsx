@@ -4,9 +4,11 @@ function Home() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/articles')
-            .then(res => res.json())
-            .then(data => setArticles(data))
+        ;(async () => {
+            const res = await fetch('http://localhost:3000/articles')
+            const json = await res.json()
+            setArticles(json)
+        })()
     }, [])
 
     return (
@@ -21,6 +23,7 @@ function Home() {
                         <p className='w-fit rounded-md bg-slate-500 p-1'>
                             {article.site}
                         </p>
+                        <p className='text-lg'>{article.author}</p>
                         <p className='text-gray-200'>{article.snippet}</p>
                     </div>
                 ))}

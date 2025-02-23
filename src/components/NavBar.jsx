@@ -2,7 +2,7 @@ function NavBar(props) {
     return (
         <nav className='bg-slate-900 p-4'>
             <div className='mx-auto flex max-w-6xl items-center justify-between'>
-                <h1 className='font-serif text-xl font-bold select-none'>
+                <h1 className='font-serif text-2xl font-bold select-none'>
                     RSS Reader
                 </h1>
 

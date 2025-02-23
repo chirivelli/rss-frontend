@@ -7,17 +7,16 @@ function Main(props) {
     const [user, setUser] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:3000/users', {
-            method: 'GET',
-            headers: {
-                'X-Username': 'sathwikc',
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setUser(data)
+        ;(async () => {
+            const res = await fetch('http://localhost:3000/users', {
+                method: 'GET',
+                headers: {
+                    'X-Username': 'sathwikc',
+                },
             })
+            const json = await res.json()
+            setUser(json)
+        })()
     }, [])
 
     return (
