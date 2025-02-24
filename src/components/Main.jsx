@@ -1,6 +1,5 @@
 import Home from './pages/Home.jsx'
 import Subscriptions from './pages/Subscriptions.jsx'
-import Account from './pages/Account.jsx'
 import { useEffect, useState } from 'react'
 
 function Main(props) {
@@ -26,7 +25,6 @@ function Main(props) {
                 {props.activePage === 'Subscriptions' && (
                     <Subscriptions user={user} />
                 )}
-                {props.activePage === 'Account' && <Account user={user} />}
             </div>
         </main>
     )

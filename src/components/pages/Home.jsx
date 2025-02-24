@@ -19,7 +19,12 @@ function Home() {
                         key={article.title}
                         className='flex flex-col gap-1 rounded bg-slate-700 p-4'
                     >
-                        <h1 className='text-xl font-bold'>{article.title}</h1>
+                        <a
+                            className='text-xl font-bold hover:text-blue-100 hover:underline'
+                            href={article.link}
+                        >
+                            {article.title}
+                        </a>
                         <p className='w-fit rounded-md bg-slate-500 p-1'>
                             {article.site}
                         </p>
