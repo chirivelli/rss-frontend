@@ -1,5 +1,5 @@
-import Home from './pages/Home.jsx'
-import Subscriptions from './pages/Subscriptions.jsx'
+import Home from './Home.jsx'
+import Subscriptions from './Subscriptions.jsx'
 import { useEffect, useState } from 'react'
 
 function Main(props) {
