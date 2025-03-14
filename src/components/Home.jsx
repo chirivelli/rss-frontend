@@ -33,8 +33,8 @@ function Home() {
                         <ArticleContent
                             htmlString={article.snippet.replaceAll(
                                 'iframe',
-                                'frame',
-                            )}
+                                'if',
+                            ).replaceAll('style','st')}
                         />
                     </div>
                 ))}
