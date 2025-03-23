@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '../App.jsx'
 
 function Subscriptions() {
-    const [user, setUser] = useState()
-    const [subs, setSubs] = useState([]) // local copy
+    const user = useContext(UserContext)
 
     const [feedName, setFeedName] = useState('')
     const [feedLink, setFeedLink] = useState('')
-
-    useEffect(() => {
-        fetch('http://localhost:3000/users', {
-            method: 'GET',
-            headers: {
-                'X-Username': 'sathwikc',
-            },
-        })
-            .then(res => res.json())
-            .then(json => setUser(json))
-            .then(() => setSubs(user.subscriptions))
-    }, [user])
 
     return (
         <div className='grow bg-slate-800'>
@@ -67,7 +55,7 @@ function Subscriptions() {
                 <div>
                     <table className='mt-5 w-full'>
                         <tbody>
-                            {subs.map((sub, index) => (
+                            {user?.subscriptions.map((sub, index) => (
                                 <tr
                                     className='border-b-1 border-slate-600'
                                     key={index}

@@ -1,20 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ArticleContent from './ArticleContent.jsx'
 import ArticleTitle from './ArticleTitle.jsx'
+import { FeedContext } from '../App.jsx'
 
 function Home() {
-    const [articles, setArticles] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/articles')
-            .then(res => res.json())
-            .then(json => setArticles(json))
-    })
+    const articles = useContext(FeedContext)
 
     return (
         <div className='grow bg-slate-800'>
             <div className='mx-auto flex max-w-6xl flex-col gap-4 p-4'>
-                {articles.map((article, index) => (
+                {articles?.map((article, index) => (
                     <div
                         key={index}
                         className='flex flex-col gap-1 rounded bg-slate-700 p-4'
