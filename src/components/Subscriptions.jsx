@@ -2,10 +2,18 @@ import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../App.jsx'
 
 function Subscriptions() {
-    const user = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
-    const [feedName, setFeedName] = useState('')
-    const [feedLink, setFeedLink] = useState('')
+    const [subs, setSubs] = useState([])
+    const [name, setName] = useState('')
+    const [link, setLink] = useState('')
+
+    useEffect(() => {
+        setSubs([])
+        user?.subscriptions.forEach(sub => {
+            setSubs(prev => [...prev, { name: sub.name, link: sub.link }])
+        })
+    }, [user])
 
     return (
         <div className='grow bg-slate-800'>
@@ -14,15 +22,15 @@ function Subscriptions() {
                 <div className='flex items-center gap-10'>
                     <input
                         type='text'
-                        value={feedName}
-                        onChange={e => setFeedName(e.target.value)}
+                        value={name}
+                        onChange={e => setName(e.target.value)}
                         placeholder='Sub Name'
                         className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
                     />
                     <input
                         type='text'
-                        value={feedLink}
-                        onChange={e => setFeedLink(e.target.value)}
+                        value={link}
+                        onChange={e => setLink(e.target.value)}
                         placeholder='http://feed.link/rss'
                         className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
                     />
@@ -35,17 +43,23 @@ function Subscriptions() {
                                     'X-Username': 'sathwikc',
                                 },
                                 body: JSON.stringify({
-                                    name: feedName,
-                                    link: feedLink,
+                                    name,
+                                    link,
                                 }),
                             })
                                 .then(res => res.json())
                                 .then(() => {
-                                    setSubs(prev => [
-                                        ...prev,
-                                        { name: feedName, link: feedLink },
-                                    ])
+                                    setSubs(prev => [...prev, { name, link }])
                                 })
+
+                            fetch('http://localhost:3000/users', {
+                                method: 'GET',
+                                headers: {
+                                    'X-Username': 'sathwikc',
+                                },
+                            })
+                                .then(res => res.json())
+                                .then(res => setUser(res))
                         }}
                     >
                         + Add
@@ -55,7 +69,7 @@ function Subscriptions() {
                 <div>
                     <table className='mt-5 w-full'>
                         <tbody>
-                            {user?.subscriptions.map((sub, index) => (
+                            {subs.map((sub, index) => (
                                 <tr
                                     className='border-b-1 border-slate-600'
                                     key={index}

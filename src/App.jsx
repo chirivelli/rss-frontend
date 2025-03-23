@@ -30,7 +30,7 @@ function App() {
     }, [])
 
     return (
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{ user, setUser }}>
             <FeedContext.Provider value={articles}>
                 <div className='flex h-screen flex-col text-gray-50'>
                     <NavBar />
