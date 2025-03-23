@@ -6,16 +6,14 @@ function Home() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        ;(async () => {
-            const res = await fetch('http://localhost:3000/articles')
-            const json = await res.json()
-            setArticles(json)
-        })()
-    }, [])
+        fetch('http://localhost:3000/articles')
+            .then(res => res.json())
+            .then(json => setArticles(json))
+    })
 
     return (
-        <div className='bg-slate-800'>
-            <div className='mx-auto mt-4 flex max-w-6xl flex-col gap-4'>
+        <div className='grow bg-slate-800'>
+            <div className='mx-auto flex max-w-6xl flex-col gap-4 p-4'>
                 {articles.map((article, index) => (
                     <div
                         key={index}
@@ -30,11 +28,7 @@ function Home() {
                         </p>
                         <p className='text-lg'>{article.author}</p>
 
-                        <ArticleContent
-                            htmlString={article.snippet
-                                .replaceAll('iframe', 'if')
-                                .replaceAll('style', 'st')}
-                        />
+                        <ArticleContent htmlString={article.snippet} />
                     </div>
                 ))}
             </div>

@@ -12,7 +12,7 @@ function NavBar() {
                     <NavLink
                         to='/'
                         className={({ isActive }) =>
-                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-600'}`
+                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-700'}`
                         }
                     >
                         Home
@@ -21,7 +21,7 @@ function NavBar() {
                     <NavLink
                         to='/subscriptions'
                         className={({ isActive }) =>
-                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-600'}`
+                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-700'}`
                         }
                     >
                         Subscriptions
