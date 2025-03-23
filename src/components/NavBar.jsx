@@ -1,4 +1,6 @@
-function NavBar(props) {
+import { NavLink } from 'react-router'
+
+function NavBar() {
     return (
         <nav className='bg-slate-900 p-4'>
             <div className='mx-auto flex max-w-6xl items-center justify-between'>
@@ -6,20 +8,25 @@ function NavBar(props) {
                     RSS Reader
                 </h1>
 
-                <ol className='flex gap-2'>
-                    <li
-                        className={`cursor-pointer rounded-sm px-4 py-2 transition hover:bg-slate-600 ${props.activePage === 'Home' && 'bg-slate-700'}`}
-                        onClick={() => props.setActivePage('Home')}
+                <div className='flex gap-2'>
+                    <NavLink
+                        to='/'
+                        className={({ isActive }) =>
+                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-600'}`
+                        }
                     >
                         Home
-                    </li>
-                    <li
-                        className={`cursor-pointer rounded-sm px-4 py-2 transition hover:bg-slate-600 ${props.activePage === 'Subscriptions' && 'bg-slate-700'}`}
-                        onClick={() => props.setActivePage('Subscriptions')}
+                    </NavLink>
+
+                    <NavLink
+                        to='/subscriptions'
+                        className={({ isActive }) =>
+                            `cursor-pointer rounded px-4 py-2 transition hover:bg-slate-600 ${isActive && 'bg-slate-600'}`
+                        }
                     >
                         Subscriptions
-                    </li>
-                </ol>
+                    </NavLink>
+                </div>
             </div>
         </nav>
     )

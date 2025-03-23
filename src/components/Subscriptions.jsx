@@ -1,12 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-function Subscriptions(props) {
-    const [subs, setSubs] = useState(props.user.subscriptions)
+function Subscriptions() {
+    const [subs, setSubs] = useState([])
     const [subName, setSubName] = useState('')
     const [feedLink, setFeedLink] = useState('')
 
+    const [user, setUser] = useState()
+
+    useEffect(() => {
+        ;(async () => {
+            const res = await fetch('http://localhost:3000/users', {
+                method: 'GET',
+                headers: {
+                    'X-Username': 'sathwikc',
+                },
+            })
+            const json = await res.json()
+            console.log(json)
+            setUser(json)
+            setSubs(user.subscriptions)
+        })()
+    }, [user])
+
     return (
-        <div>
+        <div className={'bg-slate-800'}>
             <div className='flex items-center gap-10'>
                 <input
                     type='text'
@@ -36,8 +53,7 @@ function Subscriptions(props) {
                             }),
                         })
                             .then(res => res.json())
-                            .then(res => console.log(res))
-                            .then(res => {
+                            .then(() => {
                                 setSubs(prev => [
                                     ...prev,
                                     { name: subName, link: feedLink },

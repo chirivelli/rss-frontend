@@ -14,7 +14,7 @@ function Home() {
     }, [])
 
     return (
-        <div>
+        <div className='bg-slate-800'>
             <div className='mx-auto mt-4 flex max-w-6xl flex-col gap-4'>
                 {articles.map((article, index) => (
                     <div
@@ -31,10 +31,9 @@ function Home() {
                         <p className='text-lg'>{article.author}</p>
 
                         <ArticleContent
-                            htmlString={article.snippet.replaceAll(
-                                'iframe',
-                                'if',
-                            ).replaceAll('style','st')}
+                            htmlString={article.snippet
+                                .replaceAll('iframe', 'if')
+                                .replaceAll('style', 'st')}
                         />
                     </div>
                 ))}
