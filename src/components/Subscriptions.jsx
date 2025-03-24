@@ -1,79 +1,80 @@
-import { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../App.jsx'
+import { useEffect, useState } from 'react'
 
 function Subscriptions() {
-    const { user, setUser } = useContext(UserContext)
+    const [user, setUser] = useState()
 
-    const [subs, setSubs] = useState([])
-    const [name, setName] = useState('')
-    const [link, setLink] = useState('')
+    const updateUser = async () => {
+        const res = await fetch('http://localhost:3000/users', {
+            method: 'GET',
+            headers: { 'X-Username': 'sathwikc' },
+        })
+        const data = await res.json()
+        setUser(data)
+        return data
+    }
+
+    const handleDelete = async sub => {
+        await fetch('http://localhost:3000/subscriptions', {
+            method: 'DELETE',
+            headers: { 'X-Username': 'sathwikc' },
+            body: JSON.stringify(sub),
+        })
+        await updateUser()
+    }
+
+    const handleSubmit = async formData => {
+        await fetch('http://localhost:3000/subscriptions', {
+            method: 'POST',
+            headers: { 'X-Username': 'sathwikc' },
+            body: JSON.stringify(Object.fromEntries(formData)),
+        })
+        await updateUser()
+    }
 
     useEffect(() => {
-        setSubs([])
-        user?.subscriptions.forEach(sub => {
-            setSubs(prev => [...prev, { name: sub.name, link: sub.link }])
-        })
-    }, [user])
+        updateUser().then(user => console.log(user))
+    }, [])
 
     return (
         <div className='grow bg-slate-800'>
             <div className='mx-auto max-w-6xl p-4'>
-                {/* Input */}
-                <div className='flex items-center gap-10'>
-                    <input
-                        type='text'
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        placeholder='Sub Name'
-                        className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
-                    />
-                    <input
-                        type='text'
-                        value={link}
-                        onChange={e => setLink(e.target.value)}
-                        placeholder='http://feed.link/rss'
-                        className='rounded-md border border-gray-200 bg-gray-200 px-4 py-2 text-gray-950 placeholder-gray-500'
-                    />
-                    <button
-                        className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'
-                        onClick={() => {
-                            fetch('http://localhost:3000/subscriptions', {
-                                method: 'POST',
-                                headers: {
-                                    'X-Username': 'sathwikc',
-                                },
-                                body: JSON.stringify({
-                                    name,
-                                    link,
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(() => {
-                                    setSubs(prev => [...prev, { name, link }])
-                                })
-
-                            fetch('http://localhost:3000/users', {
-                                method: 'GET',
-                                headers: {
-                                    'X-Username': 'sathwikc',
-                                },
-                            })
-                                .then(res => res.json())
-                                .then(res => setUser(res))
-                        }}
-                    >
-                        + Add
-                    </button>
-                </div>
-                {/* List */}
-                <div>
-                    <table className='mt-5 w-full'>
+                <form action={handleSubmit}>
+                    <table className='w-full rounded-md bg-slate-700'>
+                        <thead>
+                            <tr>
+                                <th className='p-4 text-left font-normal'>
+                                    <input
+                                        type='text'
+                                        name='name'
+                                        placeholder='Feed Name'
+                                        className='rounded-md bg-slate-200 px-4 py-2 text-gray-950'
+                                    />
+                                </th>
+                                <th className='p-4 text-left font-normal'>
+                                    <input
+                                        type='url'
+                                        name='link'
+                                        placeholder='https://feed.link/rss'
+                                        className='rounded-md bg-slate-200 px-4 py-2 text-gray-950'
+                                    />
+                                </th>
+                                <th className='p-4 text-left font-normal'>
+                                    <button className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'>
+                                        + Add
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            {subs.map((sub, index) => (
+                            {user?.subscriptions.map((sub, index) => (
                                 <tr
-                                    className='border-b-1 border-slate-600'
+                                    className='border-t-1 border-slate-600'
                                     key={index}
                                 >
+                                    <td className='p-4'>{sub?.name}</td>
+                                    <td className='p-4 text-sm text-blue-400 italic'>
+                                        {sub?.link}
+                                    </td>
                                     <td className='p-4'>
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
@@ -81,47 +82,16 @@ function Subscriptions() {
                                             viewBox='0 0 24 24'
                                             stroke='currentColor'
                                             className='size-6 cursor-pointer'
-                                            onClick={() => {
-                                                fetch(
-                                                    'http://localhost:3000/subscriptions',
-                                                    {
-                                                        method: 'DELETE',
-                                                        headers: {
-                                                            'X-Username':
-                                                                'sathwikc',
-                                                        },
-                                                        body: JSON.stringify(
-                                                            sub,
-                                                        ),
-                                                    },
-                                                )
-                                                    .then(res => res.json())
-                                                    .then(res =>
-                                                        console.log(res),
-                                                    )
-                                                    .then(res => {
-                                                        setSubs(
-                                                            subs.filter(
-                                                                x =>
-                                                                    x.link !==
-                                                                    sub.link,
-                                                            ),
-                                                        )
-                                                    })
-                                            }}
+                                            onClick={() => handleDelete(sub)}
                                         >
                                             <path d='M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
                                         </svg>
-                                    </td>
-                                    <td className='p-4'>{sub?.name}</td>
-                                    <td className='p-4 text-sm text-blue-400 italic'>
-                                        {sub?.link}
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                </div>
+                </form>
             </div>
         </div>
     )
