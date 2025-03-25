@@ -1,44 +1,44 @@
 import { useEffect, useState } from 'react'
 
 function Subscriptions() {
-    const [user, setUser] = useState()
+    const [subscriptions, setSubscriptions] = useState([])
 
-    const updateUser = async () => {
-        const res = await fetch('http://localhost:3000/users', {
+    const getSubscriptions = async () => {
+        const res = await fetch('http://localhost:3000/subscriptions', {
             method: 'GET',
             headers: { 'X-Username': 'sathwikc' },
         })
         const data = await res.json()
-        setUser(data)
+        setSubscriptions(data)
         return data
     }
 
-    const handleDelete = async sub => {
+    const postSubscription = async sub => {
+        await fetch('http://localhost:3000/subscriptions', {
+            method: 'POST',
+            headers: { 'X-Username': 'sathwikc' },
+            body: JSON.stringify(Object.fromEntries(sub)),
+        })
+        await getSubscriptions()
+    }
+
+    const deleteSubscription = async sub => {
         await fetch('http://localhost:3000/subscriptions', {
             method: 'DELETE',
             headers: { 'X-Username': 'sathwikc' },
             body: JSON.stringify(sub),
         })
-        await updateUser()
-    }
-
-    const handleSubmit = async formData => {
-        await fetch('http://localhost:3000/subscriptions', {
-            method: 'POST',
-            headers: { 'X-Username': 'sathwikc' },
-            body: JSON.stringify(Object.fromEntries(formData)),
-        })
-        await updateUser()
+        await getSubscriptions()
     }
 
     useEffect(() => {
-        updateUser().then(user => console.log(user))
+        getSubscriptions().then(subscriptions => !!subscriptions)
     }, [])
 
     return (
         <div className='grow bg-slate-800'>
             <div className='mx-auto max-w-6xl p-4'>
-                <form action={handleSubmit}>
+                <form action={postSubscription}>
                     <table className='w-full rounded-md bg-slate-700'>
                         <thead>
                             <tr>
@@ -66,10 +66,10 @@ function Subscriptions() {
                             </tr>
                         </thead>
                         <tbody>
-                            {user?.subscriptions.map((sub, index) => (
+                            {subscriptions.map(sub => (
                                 <tr
                                     className='border-t-1 border-slate-600'
-                                    key={index}
+                                    key={sub._id}
                                 >
                                     <td className='p-4'>{sub?.name}</td>
                                     <td className='p-4 text-sm text-blue-400 italic'>
@@ -82,7 +82,9 @@ function Subscriptions() {
                                             viewBox='0 0 24 24'
                                             stroke='currentColor'
                                             className='size-6 cursor-pointer'
-                                            onClick={() => handleDelete(sub)}
+                                            onClick={() =>
+                                                deleteSubscription(sub)
+                                            }
                                         >
                                             <path d='M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
                                         </svg>

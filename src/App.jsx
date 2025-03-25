@@ -1,28 +1,18 @@
-import NavBar from './components/NavBar.jsx'
-import { Outlet } from 'react-router'
-import { createContext, useEffect, useState } from 'react'
-
-export const FeedContext = createContext()
+import { BrowserRouter, Route, Routes } from 'react-router'
+import Layout from './components/Layout.jsx'
+import Home from './components/Home.jsx'
+import Subscriptions from './components/Subscriptions.jsx'
 
 function App() {
-    const [articles, setArticles] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/articles', {
-            method: 'GET',
-            headers: { 'X-Username': 'sathwikc' },
-        })
-            .then(res => res.json())
-            .then(res => setArticles(res))
-    }, [])
-
     return (
-        <FeedContext value={articles}>
-            <div className='flex h-screen flex-col text-gray-50'>
-                <NavBar />
-                <Outlet />
-            </div>
-        </FeedContext>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path='subscriptions' element={<Subscriptions />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
 

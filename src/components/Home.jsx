@@ -1,10 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ArticleContent from './ArticleContent.jsx'
 import ArticleTitle from './ArticleTitle.jsx'
-import { FeedContext } from '../App.jsx'
 
 function Home() {
-    const articles = useContext(FeedContext)
+    const [articles, setArticles] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/articles', {
+            method: 'GET',
+            headers: { 'X-Username': 'sathwikc' },
+        })
+            .then(res => res.json())
+            .then(res => setArticles(res))
+    }, [])
 
     return (
         <div className='grow bg-slate-800'>
@@ -18,10 +26,9 @@ function Home() {
                             htmlString={article.title}
                             link={article.link}
                         />
-                        <p className='w-fit rounded-md bg-slate-500 p-1'>
-                            {article.site}
+                        <p className='text-lg text-gray-100/80'>
+                            {article.author}, {article.site}
                         </p>
-                        <p className='text-lg'>{article.author}</p>
 
                         <ArticleContent htmlString={article.snippet} />
                     </div>
