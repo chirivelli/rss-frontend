@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
 import ArticleContent from './ArticleContent.jsx'
 import ArticleTitle from './ArticleTitle.jsx'
+import { getArticles, getSubscriptions } from '../api.js'
 
 function Home() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/articles', {
-            method: 'GET',
-            headers: { 'X-Username': 'sathwikc' },
-        })
-            .then(res => res.json())
-            .then(res => setArticles(res))
+        async function fetchArticles() {
+            const subscriptions = await getSubscriptions()
+            for (let sub of subscriptions) {
+                const data = await getArticles(sub.link)
+                setArticles(prev => [...prev, ...data])
+            }
+        }
+
+        fetchArticles()
     }, [])
 
     return (

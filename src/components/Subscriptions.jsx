@@ -1,44 +1,36 @@
 import { useEffect, useState } from 'react'
+import {
+    getSubscriptions,
+    postSubscription,
+    deleteSubscription,
+} from '../api.js'
 
 function Subscriptions() {
     const [subscriptions, setSubscriptions] = useState([])
 
-    const getSubscriptions = async () => {
-        const res = await fetch('http://localhost:3000/subscriptions', {
-            method: 'GET',
-            headers: { 'X-Username': 'sathwikc' },
-        })
-        const data = await res.json()
+    const fetchSubscriptions = async () => {
+        const data = await getSubscriptions()
         setSubscriptions(data)
-        return data
     }
 
-    const postSubscription = async sub => {
-        await fetch('http://localhost:3000/subscriptions', {
-            method: 'POST',
-            headers: { 'X-Username': 'sathwikc' },
-            body: JSON.stringify(Object.fromEntries(sub)),
-        })
-        await getSubscriptions()
+    const formAction = async sub => {
+        await postSubscription(sub)
+        await fetchSubscriptions()
     }
 
-    const deleteSubscription = async sub => {
-        await fetch('http://localhost:3000/subscriptions', {
-            method: 'DELETE',
-            headers: { 'X-Username': 'sathwikc' },
-            body: JSON.stringify(sub),
-        })
-        await getSubscriptions()
+    const handleClick = async sub => {
+        await deleteSubscription(sub)
+        await fetchSubscriptions()
     }
 
     useEffect(() => {
-        getSubscriptions().then(subscriptions => !!subscriptions)
+        fetchSubscriptions()
     }, [])
 
     return (
         <div className='grow bg-slate-800'>
             <div className='mx-auto max-w-6xl p-4'>
-                <form action={postSubscription}>
+                <form action={formAction}>
                     <table className='w-full rounded-md bg-slate-700'>
                         <thead>
                             <tr>
@@ -82,9 +74,7 @@ function Subscriptions() {
                                             viewBox='0 0 24 24'
                                             stroke='currentColor'
                                             className='size-6 cursor-pointer'
-                                            onClick={() =>
-                                                deleteSubscription(sub)
-                                            }
+                                            onClick={() => handleClick(sub)}
                                         >
                                             <path d='M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
                                         </svg>
