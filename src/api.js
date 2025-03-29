@@ -1,6 +1,9 @@
+const SERVER_URL = 'https://rss-backend-oiqk.onrender.com'
+// const SERVER_URL = 'http://localhost:3000'
+
 // Subscriptions
 export const getSubscriptions = async () => {
-    const res = await fetch('http://localhost:3000/subscriptions', {
+    const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
     })
@@ -8,7 +11,7 @@ export const getSubscriptions = async () => {
 }
 
 export const postSubscription = async sub => {
-    const res = await fetch('http://localhost:3000/subscriptions', {
+    const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'POST',
         headers: { 'X-Username': 'sathwikc' },
         body: JSON.stringify(Object.fromEntries(sub)),
@@ -17,7 +20,7 @@ export const postSubscription = async sub => {
 }
 
 export const deleteSubscription = async sub => {
-    const res = await fetch('http://localhost:3000/subscriptions', {
+    const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'DELETE',
         headers: { 'X-Username': 'sathwikc' },
         body: JSON.stringify(sub),
@@ -27,7 +30,7 @@ export const deleteSubscription = async sub => {
 
 // Articles
 export const getArticles = async feedLink => {
-    const res = await fetch('http://localhost:3000/articles', {
+    const res = await fetch(SERVER_URL + '/articles', {
         method: 'GET',
         headers: { 'X-FeedLink': feedLink },
     })
