@@ -20,6 +20,7 @@ function Home() {
 
     return (
         <div className='grow bg-slate-800'>
+            mino <div></div>
             <div className='mx-auto flex max-w-6xl flex-col gap-4 p-4'>
                 {articles?.map((article, index) => (
                     <div
@@ -30,9 +31,14 @@ function Home() {
                             htmlString={article.title}
                             link={article.link}
                         />
-                        <p className='text-lg text-gray-100/80'>
-                            {article.author}, {article.site}
-                        </p>
+                        <div className='flex items-center gap-2'>
+                            <span className='w-fit rounded bg-slate-500 px-2 py-1'>
+                                {article.site}
+                            </span>
+                            <span className='text-lg text-gray-50/80'>
+                                {article.author}
+                            </span>
+                        </div>
 
                         <ArticleContent htmlString={article.snippet} />
                     </div>
