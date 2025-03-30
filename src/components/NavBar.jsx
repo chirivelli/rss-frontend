@@ -5,7 +5,7 @@ function NavBar() {
         <nav className='bg-slate-900 p-4'>
             <div className='mx-auto flex max-w-6xl items-center justify-between'>
                 <h1 className='font-serif text-2xl font-bold select-none'>
-                    RSS Reader
+                    Readly
                 </h1>
 
                 <div className='flex gap-2'>

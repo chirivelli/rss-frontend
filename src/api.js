@@ -1,5 +1,4 @@
-const SERVER_URL = 'https://rss-backend-oiqk.onrender.com'
-// const SERVER_URL = 'http://localhost:3000'
+import { SERVER_URL } from './env'
 
 // Subscriptions
 export const getSubscriptions = async () => {

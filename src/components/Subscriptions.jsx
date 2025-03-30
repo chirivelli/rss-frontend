@@ -29,7 +29,7 @@ function Subscriptions() {
 
     return (
         <div className='grow bg-slate-800'>
-            <div className='mx-auto max-w-6xl p-4'>
+            <div className='mx-auto max-w-6xl overflow-x-auto p-4'>
                 <form action={formAction}>
                     <table className='w-full rounded-md bg-slate-700'>
                         <thead>
@@ -52,7 +52,7 @@ function Subscriptions() {
                                 </th>
                                 <th className='p-4 text-left font-normal'>
                                     <button className='rounded-md bg-slate-500 px-4 py-2 transition hover:cursor-pointer hover:bg-slate-600/80'>
-                                        + Add
+                                        Add
                                     </button>
                                 </th>
                             </tr>
