@@ -1,5 +1,14 @@
 import { SERVER_URL } from './env'
 
+// Users
+export const getUsers = async () => {
+    const res = await fetch(SERVER_URL + '/users', {
+        method: 'GET',
+        headers: { 'X-Username': 'sathwikc' },
+    })
+    return await res.json()
+}
+
 // Subscriptions
 export const getSubscriptions = async () => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
