@@ -7,6 +7,18 @@ function Home() {
     const [articles, setArticles] = useState([])
     const [search, setSearch] = useState('')
 
+    const inMetaData = article => {
+        let inSnippet = article.snippet
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        let inSite = article.site.toLowerCase().includes(search.toLowerCase())
+        let inAuthor = (article.author ?? '')
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        let inTitle = article.title.toLowerCase().includes(search.toLowerCase())
+        return inSnippet || inSite || inAuthor || inTitle
+    }
+
     useEffect(() => {
         async function fetchArticles() {
             const subscriptions = await getSubscriptions()
@@ -32,21 +44,7 @@ function Home() {
                     />
                 </div>
                 {articles
-                    ?.filter(
-                        article =>
-                            article.snippet
-                                .toLowerCase()
-                                .includes(search.toLowerCase()) ||
-                            article.site
-                                .toLowerCase()
-                                .includes(search.toLowerCase()) ||
-                            article.author
-                                .toLowerCase()
-                                .includes(search.toLowerCase()) ||
-                            article.title
-                                .toLowerCase()
-                                .includes(search.toLowerCase()),
-                    )
+                    ?.filter(article => inMetaData(article))
                     .map((article, index) => (
                         <div
                             key={index}
