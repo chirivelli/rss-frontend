@@ -40,6 +40,9 @@ function Home() {
                             article.site
                                 .toLowerCase()
                                 .includes(search.toLowerCase()) ||
+                            article.author
+                                .toLowerCase()
+                                .includes(search.toLowerCase()) ||
                             article.title
                                 .toLowerCase()
                                 .includes(search.toLowerCase()),
