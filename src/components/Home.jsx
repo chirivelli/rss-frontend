@@ -55,11 +55,28 @@ function Home() {
                                 link={article.link}
                             />
                             <div className='flex items-center gap-2'>
-                                <span className='w-fit rounded bg-slate-500 px-2 py-1'>
-                                    {article.site}
-                                </span>
+                                {article.imageLink ? (
+                                    <img
+                                        className='size-8 rounded object-cover'
+                                        src={article.imageLink}
+                                        alt={article.title}
+                                    />
+                                ) : (
+                                    <span className='w-fit rounded bg-slate-500 px-2 py-1'>
+                                        {article.site}
+                                    </span>
+                                )}
                                 <span className='text-lg text-gray-50/80'>
                                     {article.author}
+                                </span>
+                                <span className='text-lg text-gray-50/80'>
+                                    {new Date(
+                                        article.published,
+                                    ).toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: true, // Use `false` for 24-hour format
+                                    })}
                                 </span>
                             </div>
 

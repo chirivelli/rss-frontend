@@ -5,6 +5,7 @@ export default function ArticleContent({ htmlString }) {
             dangerouslySetInnerHTML={{
                 __html: htmlString
                     .replaceAll('iframe', 'if')
+                    .replaceAll('img', 'pic')
                     .replaceAll('style', 'st'),
             }}
         ></p>
