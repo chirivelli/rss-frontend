@@ -54,7 +54,7 @@ function Home() {
                                 htmlString={article.title}
                                 link={article.link}
                             />
-                            <div className='flex items-center gap-2'>
+                            <div className='flex flex-wrap items-center gap-2'>
                                 {article.imageLink ? (
                                     <img
                                         className='size-8 rounded object-cover'
