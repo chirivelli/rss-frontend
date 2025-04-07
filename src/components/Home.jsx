@@ -57,7 +57,7 @@ function Home() {
                             <div className='flex flex-wrap items-center gap-2'>
                                 {article.imageLink ? (
                                     <img
-                                        className='size-8 rounded object-cover'
+                                        className='size-6 rounded object-cover'
                                         src={article.imageLink}
                                         alt={article.title}
                                     />
@@ -66,10 +66,10 @@ function Home() {
                                         {article.site}
                                     </span>
                                 )}
-                                <span className='text-lg text-gray-50/80'>
+                                <span className='text-md text-gray-50/80'>
                                     {article.author}
                                 </span>
-                                <span className='text-lg text-gray-50/80'>
+                                <span className='text-md text-gray-50/80'>
                                     {new Date(
                                         article.published,
                                     ).toLocaleTimeString('en-US', {
