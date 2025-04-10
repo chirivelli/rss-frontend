@@ -2,8 +2,8 @@ import { NavLink } from 'react-router'
 
 function NavBar() {
     return (
-        <nav className='bg-slate-900 p-4'>
-            <div className='mx-auto flex max-w-6xl items-center justify-between'>
+        <nav className='bg-slate-900'>
+            <div className='mx-auto flex max-w-6xl items-center justify-between p-4'>
                 <h1 className='font-serif text-2xl font-bold select-none'>
                     Readly
                 </h1>
