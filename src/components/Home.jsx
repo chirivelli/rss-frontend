@@ -62,7 +62,7 @@ function Home() {
                                         alt={article.title}
                                     />
                                 ) : (
-                                    <span className='w-fit rounded bg-slate-500 px-2 py-1'>
+                                    <span className='text-md w-fit rounded bg-slate-500 px-1'>
                                         {article.site}
                                     </span>
                                 )}
@@ -73,7 +73,7 @@ function Home() {
                                     {new Date(
                                         article.published,
                                     ).toLocaleTimeString('en-US', {
-                                        hour: '2-digit',
+                                        hour: 'numeric',
                                         minute: '2-digit',
                                         hour12: true, // Use `false` for 24-hour format
                                     })}
