@@ -58,10 +58,10 @@ function Subscriptions() {
                             </tr>
                         </thead>
                         <tbody>
-                            {subscriptions.map(sub => (
+                            {subscriptions.map((sub, index) => (
                                 <tr
                                     className='border-t-1 border-slate-600'
-                                    key={sub._id}
+                                    key={index}
                                 >
                                     <td className='p-4'>{sub?.name}</td>
                                     <td className='p-4 text-sm text-blue-400 italic'>

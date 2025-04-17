@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import ArticleContent from './ArticleContent.jsx'
-import ArticleTitle from './ArticleTitle.jsx'
 import { getArticles, getSubscriptions } from '../api.js'
+import Article from './Article.jsx'
 
 function Home() {
     const [articles, setArticles] = useState([])
@@ -44,44 +43,9 @@ function Home() {
                     />
                 </div>
                 {articles
-                    ?.filter(article => inMetaData(article))
-                    .map((article, index) => (
-                        <div
-                            key={index}
-                            className='flex flex-col gap-1 rounded bg-slate-700 p-4'
-                        >
-                            <ArticleTitle
-                                htmlString={article.title}
-                                link={article.link}
-                            />
-                            <div className='flex flex-wrap items-center gap-2'>
-                                {article.imageLink ? (
-                                    <img
-                                        className='size-6 rounded object-cover'
-                                        src={article.imageLink}
-                                        alt={article.title}
-                                    />
-                                ) : (
-                                    <span className='text-md w-fit rounded bg-slate-500 px-1'>
-                                        {article.site}
-                                    </span>
-                                )}
-                                <span className='text-md text-gray-50/80'>
-                                    {article.author}
-                                </span>
-                                <span className='text-md text-gray-50/80'>
-                                    {new Date(
-                                        article.published,
-                                    ).toLocaleTimeString('en-US', {
-                                        hour: 'numeric',
-                                        minute: '2-digit',
-                                        hour12: true, // Use `false` for 24-hour format
-                                    })}
-                                </span>
-                            </div>
-
-                            <ArticleContent htmlString={article.snippet} />
-                        </div>
+                    .filter(article => inMetaData(article))
+                    .map((post, i) => (
+                        <Article key={i} post={post} />
                     ))}
             </div>
         </div>
