@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getArticles, getSubscriptions } from '../api.js'
+import { getArticles, getSortedArticles, getSubscriptions } from '../api.js'
 import Article from './Article.jsx'
 
 function Home() {
@@ -20,11 +20,13 @@ function Home() {
 
     useEffect(() => {
         async function fetchArticles() {
-            const subscriptions = await getSubscriptions()
-            for (let sub of subscriptions) {
-                const data = await getArticles(sub.link)
-                setArticles(prev => [...prev, ...data])
-            }
+            // const subscriptions = await getSubscriptions()
+            // for (let sub of subscriptions) {
+            //     const data = await getArticles(sub.link)
+            //     setArticles(prev => [...prev, ...data])
+            // }
+            const articles = await getSortedArticles()
+            setArticles(articles)
         }
 
         fetchArticles()

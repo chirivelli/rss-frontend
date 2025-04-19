@@ -44,3 +44,11 @@ export const getArticles = async feedLink => {
     })
     return await res.json()
 }
+
+export const getSortedArticles = async () => {
+    const res = await fetch(SERVER_URL + '/articles/sorted', {
+        method: 'GET',
+        headers: { 'X-Username': 'sathwikc' },
+    })
+    return await res.json()
+}
