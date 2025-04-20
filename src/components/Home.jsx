@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { getArticles, getSortedArticles, getSubscriptions } from '../api.js'
 import Article from './Article.jsx'
 
 function Home() {
-    const [articles, setArticles] = useState([])
+    const { isLoading, data } = useQuery({
+        queryKey: ['newsfeed'],
+        queryFn: getSortedArticles,
+    })
     const [search, setSearch] = useState('')
 
     const inMetaData = article => {
@@ -18,20 +22,6 @@ function Home() {
         return inSnippet || inSite || inAuthor || inTitle
     }
 
-    useEffect(() => {
-        async function fetchArticles() {
-            // const subscriptions = await getSubscriptions()
-            // for (let sub of subscriptions) {
-            //     const data = await getArticles(sub.link)
-            //     setArticles(prev => [...prev, ...data])
-            // }
-            const articles = await getSortedArticles()
-            setArticles(articles)
-        }
-
-        fetchArticles()
-    }, [])
-
     return (
         <div className='grow bg-slate-800'>
             <div className='mx-auto flex max-w-6xl flex-col gap-4 p-4'>
@@ -44,11 +34,13 @@ function Home() {
                         onChange={e => setSearch(e.target.value)}
                     />
                 </div>
-                {articles
-                    .filter(article => inMetaData(article))
-                    .map((post, i) => (
-                        <Article key={i} post={post} />
-                    ))}
+                {!isLoading ? (
+                    data
+                        .filter(article => inMetaData(article))
+                        .map(post => <Article key={post.title} post={post} />)
+                ) : (
+                    <p className={`mx-auto`}>Loading...</p>
+                )}
             </div>
         </div>
     )
