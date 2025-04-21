@@ -5,7 +5,7 @@ export default function Article({ post }) {
     return (
         <div className='flex flex-col gap-1 rounded bg-slate-700 p-4'>
             <ArticleTitle htmlString={post.title} link={post.link} />
-            <div className='flex flex-wrap items-center gap-2'>
+            <div className='my-1 flex flex-wrap items-center gap-2'>
                 {post.imageLink ? (
                     <img
                         className='size-6 rounded object-cover'
@@ -17,7 +17,6 @@ export default function Article({ post }) {
                         {post.site}
                     </span>
                 )}
-                <span className='text-md text-gray-50/80'>{post.author}</span>
                 <span className='text-md text-gray-50/80'>
                     {new Date(post.published).toLocaleTimeString('en-US', {
                         hour: 'numeric',
@@ -25,6 +24,7 @@ export default function Article({ post }) {
                         hour12: true, // Use `false` for 24-hour format
                     })}
                 </span>
+                <span className='text-md text-gray-50/80'>{post.author}</span>
             </div>
 
             <ArticleContent htmlString={post.snippet} />
