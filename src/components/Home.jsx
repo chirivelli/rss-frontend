@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getArticles, getSortedArticles, getSubscriptions } from '../api.js'
+import { getArticles } from '../api.js'
 import Article from './Article.jsx'
 
 function Home() {
     const { isLoading, data } = useQuery({
         queryKey: ['newsfeed'],
-        queryFn: getSortedArticles,
+        queryFn: getArticles,
     })
     const [search, setSearch] = useState('')
 

@@ -37,16 +37,8 @@ export const deleteSubscription = async sub => {
 }
 
 // Articles
-export const getArticles = async feedLink => {
+export const getArticles = async () => {
     const res = await fetch(SERVER_URL + '/articles', {
-        method: 'GET',
-        headers: { 'X-FeedLink': feedLink },
-    })
-    return await res.json()
-}
-
-export const getSortedArticles = async () => {
-    const res = await fetch(SERVER_URL + '/articles/sorted', {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
     })
