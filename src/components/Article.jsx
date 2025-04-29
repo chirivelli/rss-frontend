@@ -19,6 +19,7 @@ export default function Article({ post }) {
                 )}
                 <span className='text-md text-gray-50/80'>
                     {new Date(post.published).toLocaleTimeString('en-US', {
+                        weekday: 'short',
                         hour: 'numeric',
                         minute: '2-digit',
                         hour12: true, // Use `false` for 24-hour format
