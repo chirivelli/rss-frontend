@@ -11,14 +11,18 @@ function Home() {
     const [search, setSearch] = useState('')
 
     const inMetaData = article => {
-        let inSnippet = article.snippet
+        let inSnippet = (article.snippet ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
-        let inSite = article.site.toLowerCase().includes(search.toLowerCase())
+        let inSite = (article.site ?? '')
+            .toLowerCase()
+            .includes(search.toLowerCase())
         let inAuthor = (article.author ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
-        let inTitle = article.title.toLowerCase().includes(search.toLowerCase())
+        let inTitle = (article.title ?? '')
+            .toLowerCase()
+            .includes(search.toLowerCase())
         return inSnippet || inSite || inAuthor || inTitle
     }
 

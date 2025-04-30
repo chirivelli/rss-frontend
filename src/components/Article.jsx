@@ -28,7 +28,7 @@ export default function Article({ post }) {
                 <span className='text-md text-gray-50/80'>{post.author}</span>
             </div>
 
-            <ArticleContent htmlString={post.snippet} />
+            <ArticleContent htmlString={post.snippet ?? ''} />
         </div>
     )
 }
