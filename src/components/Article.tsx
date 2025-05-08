@@ -1,7 +1,7 @@
 import ArticleTitle from './ArticleTitle'
 import ArticleContent from './ArticleContent'
 
-export default function Article({ post }) {
+export default function Article({ post }: { post: Post }) {
     return (
         <div className='flex flex-col gap-1 rounded bg-slate-700 p-4'>
             <ArticleTitle htmlString={post.title} link={post.link} />

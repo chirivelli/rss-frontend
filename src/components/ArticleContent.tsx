@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function ArticleContent({ htmlString }) {
+export default function ArticleContent({ htmlString }: { htmlString: string }) {
     const [enlarge, setEnlarge] = useState(false)
     return (
         <p

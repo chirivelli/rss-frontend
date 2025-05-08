@@ -1,4 +1,5 @@
-import { SERVER_URL } from './env'
+const SERVER_URL = 'https://rss-backend-532880782069.asia-south1.run.app/'
+// const SERVER_URL = 'http://localhost:3000'
 
 // Users
 export const getUsers = async () => {
@@ -18,7 +19,7 @@ export const getSubscriptions = async () => {
     return await res.json()
 }
 
-export const postSubscription = async sub => {
+export const postSubscription = async (sub: FormData) => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'POST',
         headers: { 'X-Username': 'sathwikc' },
@@ -27,7 +28,7 @@ export const postSubscription = async sub => {
     return await res.json()
 }
 
-export const deleteSubscription = async sub => {
+export const deleteSubscription = async (sub: Subscription) => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'DELETE',
         headers: { 'X-Username': 'sathwikc' },

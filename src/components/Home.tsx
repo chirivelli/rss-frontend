@@ -10,7 +10,7 @@ function Home() {
     })
     const [search, setSearch] = useState('')
 
-    const inMetaData = article => {
+    const inMetaData = (article: Post) => {
         let inSnippet = (article.snippet ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
@@ -40,8 +40,10 @@ function Home() {
                 </div>
                 {!isLoading ? (
                     data
-                        .filter(article => inMetaData(article))
-                        .map(post => <Article key={post.title} post={post} />)
+                        .filter((article: Post) => inMetaData(article))
+                        .map((post: Post) => (
+                            <Article key={post.title} post={post} />
+                        ))
                 ) : (
                     <p className={`mx-auto`}>Loading...</p>
                 )}

@@ -13,12 +13,12 @@ function Subscriptions() {
         setSubscriptions(data)
     }
 
-    const formAction = async sub => {
+    const formAction = async (sub: FormData) => {
         await postSubscription(sub)
         await fetchSubscriptions()
     }
 
-    const handleClick = async sub => {
+    const handleClick = async (sub: Subscription) => {
         await deleteSubscription(sub)
         await fetchSubscriptions()
     }
@@ -58,7 +58,7 @@ function Subscriptions() {
                             </tr>
                         </thead>
                         <tbody>
-                            {subscriptions.map((sub, index) => (
+                            {subscriptions.map((sub: Subscription, index) => (
                                 <tr
                                     className='border-t-1 border-slate-600'
                                     key={index}
