@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
-import Layout from './components/Layout.jsx'
-import Home from './components/Home.jsx'
-import Subscriptions from './components/Subscriptions.jsx'
+import Layout from './components/Layout'
+import Home from './components/Home'
+import Subscriptions from './components/Subscriptions'
 
 function App() {
     return (

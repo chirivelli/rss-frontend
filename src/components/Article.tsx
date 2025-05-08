@@ -1,5 +1,5 @@
-import ArticleTitle from './ArticleTitle.jsx'
-import ArticleContent from './ArticleContent.jsx'
+import ArticleTitle from './ArticleTitle'
+import ArticleContent from './ArticleContent'
 
 export default function Article({ post }) {
     return (

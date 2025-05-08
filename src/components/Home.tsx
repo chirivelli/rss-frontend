@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getArticles } from '../api.js'
-import Article from './Article.jsx'
+import { getArticles } from '../api'
+import Article from './Article.js'
 
 function Home() {
     const { isLoading, data } = useQuery({
