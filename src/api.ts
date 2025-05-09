@@ -19,11 +19,11 @@ export const getSubscriptions = async () => {
     return await res.json()
 }
 
-export const postSubscription = async (sub: FormData) => {
+export const postSubscription = async (sub: Subscription) => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'POST',
         headers: { 'X-Username': 'sathwikc' },
-        body: JSON.stringify(Object.fromEntries(sub)),
+        body: JSON.stringify(sub),
     })
     return await res.json()
 }

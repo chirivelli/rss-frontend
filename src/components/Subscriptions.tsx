@@ -13,8 +13,13 @@ function Subscriptions() {
         setSubscriptions(data)
     }
 
-    const formAction = async (sub: FormData) => {
-        await postSubscription(sub)
+    const formAction = async (formData: FormData) => {
+        const name = formData.get('name') as string
+        const link = formData.get('link') as string
+
+        if (!name || !link) return
+
+        await postSubscription({ name, link })
         await fetchSubscriptions()
     }
 
