@@ -3,7 +3,7 @@ import {
     getSubscriptions,
     postSubscription,
     deleteSubscription,
-} from '../api.js'
+} from '../lib/api'
 
 function Subscriptions() {
     const [subscriptions, setSubscriptions] = useState([])

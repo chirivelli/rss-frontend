@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getArticles } from '../api'
+import { getArticles } from '../lib/api'
 import Article from './Article.js'
 
 function Home() {
