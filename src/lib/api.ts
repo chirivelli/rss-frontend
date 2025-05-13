@@ -1,4 +1,5 @@
 const SERVER_URL = 'https://rss-backend-532880782069.asia-south1.run.app/'
+// const SERVER_URL = 'http://localhost:3000'
 
 // Users
 export const getUsers = async () => {

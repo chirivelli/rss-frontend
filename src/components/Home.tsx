@@ -11,43 +11,41 @@ function Home() {
     const [search, setSearch] = useState('')
 
     const inMetaData = (article: Post) => {
-        let inSnippet = (article.snippet ?? '')
+        const inSnippet = (article.snippet ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
-        let inSite = (article.site ?? '')
+        const inSite = (article.site ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
-        let inAuthor = (article.author ?? '')
+        const inAuthor = (article.author ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
-        let inTitle = (article.title ?? '')
+        const inTitle = (article.title ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
         return inSnippet || inSite || inAuthor || inTitle
     }
 
     return (
-        <div className='grow bg-slate-800'>
-            <div className='mx-auto flex max-w-6xl flex-col gap-4 p-4'>
-                <div className='flex items-stretch justify-end gap-4'>
-                    <input
-                        type='text'
-                        className='grow rounded-md bg-gray-200 px-4 py-2 text-gray-950'
-                        value={search}
-                        placeholder='Search'
-                        onChange={e => setSearch(e.target.value)}
-                    />
-                </div>
-                {!isLoading ? (
-                    data
-                        .filter((article: Post) => inMetaData(article))
-                        .map((post: Post) => (
-                            <Article key={post.title} post={post} />
-                        ))
-                ) : (
-                    <p className={`mx-auto`}>Loading...</p>
-                )}
+        <div className='flex flex-col gap-4'>
+            <div className='flex items-stretch justify-end gap-4'>
+                <input
+                    type='text'
+                    className='grow rounded-md bg-gray-200 px-4 py-2 text-gray-950'
+                    value={search}
+                    placeholder='Search'
+                    onChange={e => setSearch(e.target.value)}
+                />
             </div>
+            {!isLoading ? (
+                data
+                    .filter((article: Post) => inMetaData(article))
+                    .map((post: Post) => (
+                        <Article key={post.title} post={post} />
+                    ))
+            ) : (
+                <p className={`mx-auto`}>Loading...</p>
+            )}
         </div>
     )
 }

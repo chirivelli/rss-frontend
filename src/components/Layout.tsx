@@ -5,7 +5,11 @@ export default function Layout() {
     return (
         <div className='flex h-screen flex-col text-gray-50'>
             <NavBar />
-            <Outlet />
+            <div className='grow bg-slate-800'>
+                <div className='mx-auto max-w-6xl overflow-x-auto p-4'>
+                    <Outlet />
+                </div>
+            </div>
         </div>
     )
 }
