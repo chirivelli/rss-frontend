@@ -1,19 +1,21 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 import Layout from './components/Layout'
 import Home from './components/Home'
 import Subscriptions from './components/Subscriptions'
 
+const router = createBrowserRouter([
+    {
+        path: '/',
+        Component: Layout,
+        children: [
+            { index: true, Component: Home },
+            { path: 'subscriptions', Component: Subscriptions },
+        ],
+    },
+])
+
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path='subscriptions' element={<Subscriptions />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    )
+    return <RouterProvider router={router} />
 }
 
 export default App
