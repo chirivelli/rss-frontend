@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import Layout from './components/Layout'
-import Home from './components/Home'
-import Subscriptions from './components/Subscriptions'
+import Home from './pages/Home'
+import RootLayout from './pages/RootLayout'
+import Subscriptions from './pages/Subscriptions'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        Component: Layout,
+        Component: RootLayout,
         children: [
             { index: true, Component: Home },
             { path: 'subscriptions', Component: Subscriptions },

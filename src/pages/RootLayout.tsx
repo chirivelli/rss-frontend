@@ -1,7 +1,7 @@
-import NavBar from './NavBar.js'
+import NavBar from '../components/NavBar'
 import { Outlet } from 'react-router'
 
-export default function Layout() {
+export default function RootLayout() {
     return (
         <div className='flex h-screen flex-col text-gray-50'>
             <NavBar />
