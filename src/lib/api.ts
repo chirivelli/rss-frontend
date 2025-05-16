@@ -1,22 +1,13 @@
 const SERVER_URL = 'https://rss-backend-532880782069.asia-south1.run.app/'
 // const SERVER_URL = 'http://localhost:3000'
 
-// Users
-export const getUsers = async () => {
-    const res = await fetch(SERVER_URL + '/users', {
-        method: 'GET',
-        headers: { 'X-Username': 'sathwikc' },
-    })
-    return await res.json()
-}
-
 // Subscriptions
 export const getSubscriptions = async () => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
     })
-    return await res.json()
+    return res.json()
 }
 
 export const postSubscription = async (sub: Subscription) => {
@@ -25,7 +16,7 @@ export const postSubscription = async (sub: Subscription) => {
         headers: { 'X-Username': 'sathwikc' },
         body: JSON.stringify(sub),
     })
-    return await res.json()
+    return res.json()
 }
 
 export const deleteSubscription = async (sub: Subscription) => {
@@ -34,7 +25,7 @@ export const deleteSubscription = async (sub: Subscription) => {
         headers: { 'X-Username': 'sathwikc' },
         body: JSON.stringify(sub),
     })
-    return await res.json()
+    return res.json()
 }
 
 // Articles
@@ -43,5 +34,5 @@ export const getArticles = async () => {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
     })
-    return await res.json()
+    return res.json()
 }
