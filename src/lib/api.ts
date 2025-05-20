@@ -2,7 +2,7 @@ const SERVER_URL = 'https://rss-backend-532880782069.asia-south1.run.app/'
 // const SERVER_URL = 'http://localhost:3000'
 
 // Subscriptions
-export const getSubscriptions = async () => {
+export const getSubscriptions = async (): Promise<Subscription[]> => {
     const res = await fetch(SERVER_URL + '/subscriptions', {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
