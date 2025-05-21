@@ -6,7 +6,7 @@ import {
 } from '../lib/api'
 
 function Subscriptions() {
-    const { isLoading, data } = useQuery({
+    const { isLoading, data, refetch } = useQuery({
         queryKey: ['subscriptions'],
         queryFn: getSubscriptions,
     })
@@ -18,10 +18,12 @@ function Subscriptions() {
         if (!name || !link) return
 
         await postSubscription({ name, link })
+        refetch()
     }
 
     const handleClick = async (sub: Subscription) => {
         await deleteSubscription(sub)
+        refetch()
     }
 
     return (

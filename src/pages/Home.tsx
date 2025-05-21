@@ -14,15 +14,19 @@ function Home() {
         const inSnippet = (article.snippet ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
+        if (inSnippet) return true
         const inSite = (article.site ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
+        if (inSite) return true
         const inAuthor = (article.author ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
+        if (inAuthor) return true
         const inTitle = (article.title ?? '')
             .toLowerCase()
             .includes(search.toLowerCase())
+        if (inTitle) return true
         return inSnippet || inSite || inAuthor || inTitle
     }
 
