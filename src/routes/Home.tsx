@@ -41,7 +41,7 @@ function Home() {
                     onChange={e => setSearch(e.target.value)}
                 />
             </div>
-            {!isLoading ? (
+            {!isLoading && data ? (
                 data
                     .filter((article: Post) => inMetaData(article))
                     .map((post: Post) => (

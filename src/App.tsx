@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import Home from './pages/Home'
-import RootLayout from './pages/RootLayout'
-import Subscriptions from './pages/Subscriptions'
+import Home from './routes/Home'
+import RootLayout from './routes/RootLayout'
+import Subscriptions from './routes/Subscriptions'
 
 const router = createBrowserRouter([
     {

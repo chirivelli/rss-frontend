@@ -29,7 +29,7 @@ export const deleteSubscription = async (sub: Subscription) => {
 }
 
 // Articles
-export const getArticles = async () => {
+export const getArticles = async (): Promise<Post[]> => {
     const res = await fetch(SERVER_URL + '/articles', {
         method: 'GET',
         headers: { 'X-Username': 'sathwikc' },
