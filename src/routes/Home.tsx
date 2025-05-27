@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getArticles } from '../lib/api'
-import Article from '../components/Article'
+import { getArticles } from '@/lib/api'
+import Article from '@/components/Article'
 
 function Home() {
     const { isLoading, data } = useQuery({

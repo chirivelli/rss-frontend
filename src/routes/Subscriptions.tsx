@@ -3,7 +3,7 @@ import {
     getSubscriptions,
     postSubscription,
     deleteSubscription,
-} from '../lib/api'
+} from '@/lib/api'
 
 function Subscriptions() {
     const { isLoading, data, refetch } = useQuery({
