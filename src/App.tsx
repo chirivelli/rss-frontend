@@ -7,6 +7,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         Component: RootLayout,
+        errorElement: <div>Error loading page</div>,
         children: [
             { index: true, Component: Home },
             { path: 'subscriptions', Component: Subscriptions },
