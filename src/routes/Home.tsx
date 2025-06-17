@@ -4,7 +4,7 @@ import { getArticles } from '@/lib/api'
 import Article from '@/components/Article'
 
 function Home() {
-    const { isLoading, data } = useQuery({
+    const { isLoading, data, isError } = useQuery({
         queryKey: ['newsfeed'],
         queryFn: getArticles,
     })
@@ -41,15 +41,14 @@ function Home() {
                     onChange={e => setSearch(e.target.value)}
                 />
             </div>
-            {!isLoading && data ? (
+            { !isError ? !isLoading && data ? (
                 data
                     .filter((article: Post) => inMetaData(article))
                     .map((post: Post) => (
                         <Article key={post.title} post={post} />
                     ))
-            ) : (
-                <p className={`mx-auto`}>Loading...</p>
-            )}
+            ) : <p className={`mx-auto`}>Loading...</p>
+             : <p className={`mx-auto`}>An Error has Occured!</p>}
         </div>
     )
 }
