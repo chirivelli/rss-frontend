@@ -1,5 +1,4 @@
-import ArticleTitle from './ArticleTitle'
-import ArticleContent from './ArticleContent'
+import { useState } from 'react'
 
 export default function Article({ post }: { post: Post }) {
     return (
@@ -30,5 +29,37 @@ export default function Article({ post }: { post: Post }) {
 
             <ArticleContent htmlString={post.snippet ?? ''} />
         </div>
+    )
+}
+
+function ArticleTitle({
+    htmlString,
+    link,
+}: {
+    htmlString: string
+    link: string
+}) {
+    return (
+        <a
+            className='line-clamp-2 text-lg font-bold hover:text-blue-100 hover:underline'
+            href={link}
+            dangerouslySetInnerHTML={{ __html: htmlString }}
+        ></a>
+    )
+}
+
+function ArticleContent({ htmlString }: { htmlString: string }) {
+    const [enlarge, setEnlarge] = useState(false)
+    return (
+        <p
+            className={`${!enlarge && 'line-clamp-2'} text-gray-200`}
+            onClick={() => setEnlarge(prev => !prev)}
+            dangerouslySetInnerHTML={{
+                __html: htmlString
+                    .replaceAll('iframe', 'if')
+                    .replaceAll('img', 'pic')
+                    .replaceAll('style', 'st'),
+            }}
+        ></p>
     )
 }
