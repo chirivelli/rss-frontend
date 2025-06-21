@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Home from '@/routes/Home'
 import RootLayout from '@/routes/RootLayout'
 import Subscriptions from '@/routes/Subscriptions'
+import Account from '@/routes/Account'
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, Component: Home },
             { path: 'subscriptions', Component: Subscriptions },
+            { path: 'account', Component: Account },
         ],
     },
 ])
