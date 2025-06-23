@@ -36,3 +36,14 @@ export const getArticles = async (): Promise<Post[]> => {
     })
     return res.json()
 }
+
+// User
+export const getUser = async (): Promise<any> => {
+    const res = await fetch(SERVER_URL + '/users', {
+        method: 'GET',
+        headers: { 'X-Username': 'sathwikc' },
+    })
+    const data = await res.json()
+    console.log(data)
+    return data
+}
