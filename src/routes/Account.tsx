@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function Account() {
     const { data } = useQuery({
-        queryKey: ['newsfeed'],
+        queryKey: ['user'],
         queryFn: getUser,
     })
 
