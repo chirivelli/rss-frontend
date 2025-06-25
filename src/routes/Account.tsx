@@ -11,7 +11,7 @@ export default function Account() {
 
     return (
         <div className='grid gap-4 rounded bg-slate-700 p-4'>
-            <div className='grid grid-cols-[200px_1fr] items-center'>
+            <div className='grid items-center sm:grid-cols-2'>
                 <label className='font-semibold text-slate-200'>Email</label>
                 <input
                     className='rounded bg-slate-600 px-2 py-1'
@@ -20,7 +20,7 @@ export default function Account() {
                 />
             </div>
 
-            <div className='grid grid-cols-[200px_1fr] items-center'>
+            <div className='grid items-center sm:grid-cols-2'>
                 <label className='font-semibold text-slate-200'>Name</label>
                 <input
                     className='rounded bg-slate-600 px-2 py-1'
@@ -29,7 +29,7 @@ export default function Account() {
                 />
             </div>
 
-            <div className='grid grid-cols-[200px_1fr] items-center'>
+            <div className='grid items-center sm:grid-cols-2'>
                 <label className='font-semibold text-slate-200'>Username</label>
                 <input
                     className='rounded bg-slate-600 px-2 py-1'
